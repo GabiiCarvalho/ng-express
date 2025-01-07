@@ -29,6 +29,7 @@ const GestaoPedidos: React.FC = () => {
     | 'Itapema'
     | 'Florianópolis'
     | 'Joinville'
+    | 'São José'
     | ''
   >('');
   const [calculatedPrice, setCalculatedPrice] = useState<number | null>(null);
@@ -37,7 +38,7 @@ const GestaoPedidos: React.FC = () => {
     'Balneário Camboriú', 'Camboriú', 'Itajaí', 'Brusque', 'Gaspar', 'Ilhota',
     'Blumenau', 'Navegantes', 'Penha', 'Balneário Piçarras', 'São João Batista',
     'Barra Velha', 'Canelinha', 'Tijucas', 'Bombas', 'Bombinhas', 'Porto Belo',
-    'Itapema', 'Florianópolis', 'Joinville'
+    'Itapema', 'Florianópolis', 'Joinville', 'São José'
   ] as const;
 
   type City = typeof cities[number];
@@ -115,6 +116,7 @@ const GestaoPedidos: React.FC = () => {
     'Itapema': 50,
     'Florianópolis': 180,
     'Joinville': 150,
+    'São José': 130,
   };
 
   return (
