@@ -34,6 +34,12 @@ const GestaoPedidos: React.FC = () => {
   >('');
   const [calculatedPrice, setCalculatedPrice] = useState<number | null>(null);
 
+  // Verifique se a variável process está definida
+  const isNode = typeof process !== 'undefined' && process.versions != null && process.versions.node != null;
+
+  // Use a variável de ambiente definida no Vite
+  const someValue = import.meta.env.VITE_SOME_ENV_VARIABLE || 'default value';
+
   const cities = [
     'Balneário Camboriú', 'Camboriú', 'Itajaí', 'Brusque', 'Gaspar', 'Ilhota',
     'Blumenau', 'Navegantes', 'Penha', 'Balneário Piçarras', 'São João Batista',
@@ -90,7 +96,7 @@ const GestaoPedidos: React.FC = () => {
 
   useEffect(() => {
     const script = document.createElement('script');
-    script.src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC6Q2E7rUGTeW4_RuTK7Pdvu2SXxTmplA4&libraries=places";
+    script.src = `https://maps.googleapis.com/maps/api/js?key=${GOOGLE_API_KEY}&libraries=places`;
     script.async = true;
     document.body.appendChild(script);
   }, []);
@@ -119,6 +125,8 @@ const GestaoPedidos: React.FC = () => {
     'São José': 130,
   };
 
+  const GOOGLE_API_KEY = process.env.REACT_APP_GOOGLE_API_KEY;
+
   return (
     <div className="flex flex-col items-center p-4 bg-gray-50 min-h-screen">
       <h1 className="text-3xl font-semibold text-gray-800 mb-8">Solicitação de Entregas</h1>
@@ -143,7 +151,7 @@ const GestaoPedidos: React.FC = () => {
         <div>
           <label className="block text-sm font-medium text-gray-700">Endereço de Entrega:</label>
           <AutoComplete
-            apiKey="AIzaSyC6Q2E7rUGTeW4_RuTK7Pdvu2SXxTmplA4"
+            apiKey={GOOGLE_API_KEY}
             onPlaceSelected={handleAddressSelect}
             options={{
               types: ['address'],

@@ -5,6 +5,12 @@
     { "path": "./tsconfig.node.json" }
   ],
   "compilerOptions": {
-    "types": ["google.maps"]
+    "types": ["google.maps"],
+    "target": "ESNext",
+    "module": "ESNext",
+    "rootDir": "./src",
+    "outDir": "./dist",
+    "esModuleInterop": true,
+    "strict": true
   }
 }
