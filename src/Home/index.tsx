@@ -1,15 +1,23 @@
 import React, { useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaPhoneAlt, FaEnvelope, FaGoogle } from 'react-icons/fa';
 import "../App.css";
 
 const Home: React.FC = () => {
   const modules = [
     {
+      title: 'Cliente',
+      items: [
+        { name: 'Login', link: '/login' },
+        { name: 'Cadastro', link: '/cadastro' },
+      ]
+    },
+    {
       title: 'Gestão de Pedidos',
       items: [
         { name: 'Rastreamento de Pedidos', link: '/rastreamento-pedidos' },
         { name: 'Otimização de Rotas', link: '/otimizacao-rotas' },
-        { name: 'Solicitação de Entregas', link: '/GestaoPedidos'}
+        { name: 'Solicitação de Entregas', link: '/GestaoPedidos' }
       ]
     },
     {
@@ -62,8 +70,8 @@ const Home: React.FC = () => {
 
   return (
     <div className="container">
-      <h1>Sistema ERP para Empresa de Entregas por Motoboy</h1>
-      <p>Conheça os módulos principais do ERP e como cada um contribui para otimizar o fluxo de trabalho de uma empresa de entregas.</p>
+      <h1>N&G EXPRESS</h1>
+      <p>Do seu clique à sua porta, tranquilidade e rapidez na palma da sua mão</p>  
 
       <nav className="navbar">
         {modules.map((module, index) => (
@@ -84,6 +92,19 @@ const Home: React.FC = () => {
           </div>
         ))}
       </nav>
+
+      <footer className="footer">
+        <div className="footer-description">
+          <p><strong>N&G EXPRESS</strong> - Soluções completas para logística e entrega rápida.</p>
+          <p>CNPJ: 24.723.159/0001-00</p>
+          <p><FaPhoneAlt /> (47) 9 9912-3260 | <FaEnvelope /> comercial.ngexpress@gmail.com</p>
+        </div>
+        <div className="footer-social">
+          <a href="https://www.facebook.com/negexpressteleentrega?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
+          <a href="https://www.instagram.com/ng.express_/profilecard/?igsh=MTB6NnJ0N3AxZXc4Zw==" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
+          <a href="https://www.google.com.br/search?q=n%26g&sca_esv=970bf9b28f8ad5fb&sxsrf=ADLYWILJ1wJI5XcWGlEmK6dID2IyylZd-A%3A1736527046386&source=hp&ei=xkyBZ_6kFejX5OUPuqumwAc&iflsig=AL9hbdgAAAAAZ4Fa1sXvIEV0jZQv8B1-GPDlIhVJYK6t&ved=0ahUKEwj-n_aty-uKAxXoK7kGHbqVCXgQ4dUDCBc&uact=5&oq=n%26g&gs_lp=Egdnd3Mtd2l6IgNuJmcyBBAjGCcyBRAAGIAEMgcQABiABBgKMgsQLhiABBjHARivATINEC4YgAQYxwEYChivATIKEAAYgAQYsQMYCjINEC4YgAQYxwEYChivATIHEAAYgAQYCjIHEAAYgAQYCjIHEAAYgAQYCkj1CVAAWK4EcAB4AJABAJgB6AGgAYoEqgEFMC4yLjG4AQPIAQD4AQGYAgOgAqcEwgIKECMYgAQYJxiKBcICERAuGIAEGLEDGNEDGIMBGMcBwgILEC4YgAQYsQMYgwHCAggQABiABBixA8ICDhAuGIAEGLEDGNEDGMcBwgILEAAYgAQYsQMYgwGYAwCSBwUwLjIuMaAHgyY&sclient=gws-wiz" target="_blank" rel="noopener noreferrer"><FaGoogle /></a>
+        </div>
+      </footer>
     </div>
   );
 };
