@@ -8,11 +8,15 @@ import Faturamento from './pages/Faturamento';
 import Relatorios from './pages/Relatorios';
 import Home from './Home';
 import './App.css';
+import Login from './Login';
+import Register from './Register';
 
 const App: React.FC = () => {
   return (
     <Routes>
       <Route path="/" element={<Home />} />
+      <Route path="/Login" element={<Login />} />
+      <Route path="/Register" element={<Register />} />
       <Route path="/GestaoPedidos" element={<GestaoPedidos />} />
       <Route path="/DespachoMotoboys" element={<DespachoMotoboys />} />
       <Route path="/Inventario" element={<GestaoInventario />} />

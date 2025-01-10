@@ -132,120 +132,108 @@ const GestaoPedidos: React.FC = () => {
 
   const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
-  return (
-    <div className="flex flex-col items-center p-4 bg-gray-100 min-h-screen">
-      <div className="w-full max-w-3xl bg-white rounded-lg shadow-md p-6 space-y-6">
-        <h1 className="text-3xl font-semibold text-gray-800 mb-8">Solicitação de Entregas</h1>
-
-        <div className="space-y-4 w-full max-w-md">
-          <div>
-            <label className="block text-sm font-medium text-gray-800">Selecione a Cidade:</label>
-            <select
-              value={city}
-              onChange={(e) => setCity(e.target.value as City)}
-              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
-            >
-              <option value="">Selecione</option>
-              {cities.map((cityName) => (
-                <option key={cityName} value={cityName}>
-                  {cityName}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-800">Endereço de Entrega:</label>
-            <AutoComplete
-              apiKey={GOOGLE_API_KEY}
-              onPlaceSelected={handleAddressSelect}
-              options={{
-                types: ['address'],
-                componentRestrictions: { country: 'BR' },
-              }}
-              defaultValue={address}
-              placeholder="Digite o endereço"
-              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-800">Número:</label>
-            <input
-              type="text"
-              value={number}
-              onChange={(e) => setNumber(e.target.value)}
-              placeholder="Ex: 123"
-              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-800">Complemento:</label>
-            <input
-              type="text"
-              value={complement}
-              onChange={(e) => setComplement(e.target.value)}
-              placeholder="Apto, Bloco, etc. (opcional)"
-              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-
-          <div>
-            <label className="block text-sm font-medium text-gray-800">Quantidade de Pedidos:</label>
-            <input
-              type="number"
-              value={quantity}
-              onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
-              className="w-full p-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-indigo-500"
-            />
-          </div>
-
-          <div className="space-x-4">
-            <button
-              onClick={handleCalculatePrice}
-              className="w-full py-2 bg-orange-600 text-white rounded-md hover:bg-orange-700 focus:ring-2 focus:ring-orange-500"
-            >
+  return (   
+      <div className="gestao-container">
+        <div className="gestao-card">
+          <h1 className="gestao-title">Solicitação de Entregas</h1>
+    
+          <div className="space-y-4 w-full max-w-md">
+            <div>
+              <label className="gestao-label">Selecione a Cidade:</label>
+              <div className="form-container">
+              <select
+                value={city}
+                onChange={(e) => setCity(e.target.value as City)}
+                className="gestao-select"
+              >
+                <option value="">Selecione</option>
+                {cities.map((cityName) => (
+                  <option key={cityName} value={cityName}>
+                    {cityName}
+                  </option>
+                ))}
+              </select>
+            </div>
+    
+            <div>
+              <label className="gestao-label">Endereço de Entrega:</label>
+              <AutoComplete
+                apiKey={GOOGLE_API_KEY}
+                onPlaceSelected={handleAddressSelect}
+                options={{ types: ['address'], componentRestrictions: { country: 'BR' } }}
+                defaultValue={address}
+                placeholder="Digite o endereço"
+                className="gestao-autocomplete"
+              />
+            </div>
+    
+            <div>
+              <label className="gestao-label">Número:</label>
+              <input
+                type="text"
+                value={number}
+                onChange={(e) => setNumber(e.target.value)}
+                placeholder="Ex: 123"
+                className="gestao-input"
+              />
+            </div>
+    
+            <div>
+              <label className="gestao-label">Complemento:</label>
+              <input
+                type="text"
+                value={complement}
+                onChange={(e) => setComplement(e.target.value)}
+                placeholder="Apto, Bloco, etc. (opcional)"
+                className="gestao-input"
+              />
+            </div>
+    
+            <div>
+              <label className="gestao-label">Quantidade de Pedidos:</label>
+              <input
+                type="number"
+                value={quantity}
+                onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
+                className="gestao-input"
+              />
+            </div>
+    
+            <button onClick={handleCalculatePrice} className="gestao-button">
               Calcular Valor
             </button>
-          </div>
-
-          {calculatedPrice !== null && (
-            <div className="mt-4 text-center">
-              <h3 className="text-xl font-medium text-gray-800 mb-2">Valor Total: R${calculatedPrice}</h3>
-              <div className="space-x-4">
-                <button
-                  onClick={handleConfirmOrder}
-                  className="py-2 bg-gray-800 text-white rounded-md hover:bg-gray-900 focus:ring-2 focus:ring-gray-600"
-                >
-                  Confirmar
-                </button>
-                <button
-                  onClick={resetForm}
-                  className="py-2 bg-gray-500 text-white rounded-md hover:bg-gray-600 focus:ring-2 focus:ring-gray-400"
-                >
-                  Cancelar
-                </button>
-              </div>
             </div>
-          )}
-
-          <h2 className="text-2xl font-bold text-orange-600 mt-8">Pedidos</h2>
-          <ul className="space-y-2">
-            {orders.map((order) => (
-              <li key={order.id} className="text-gray-700">
-                Pedido #{order.id}: {order.quantity} itens para {order.address} - R${order.price}
-              </li>
-            ))}
-          </ul>
-
-          <h3 className="text-xl font-bold text-gray-800 mt-4">Total a Pagar: R${totalAmount}</h3>
-
-          <Link to="/" className="mt-4 text-orange-600 hover:text-orange-700">Voltar</Link>
+    
+            {calculatedPrice !== null && (
+              <div className="mt-4 text-center">
+                <h3 className="gestao-total">Valor Total: R${calculatedPrice}</h3>
+                <div className="space-x-4">
+                  <button onClick={handleConfirmOrder} className="gestao-button-confirm">
+                    Confirmar
+                  </button>
+                  <button onClick={resetForm} className="gestao-button-cancel">
+                    Cancelar
+                  </button>
+                </div>
+              </div>
+            )}
+    
+            <h2 className="gestao-title text-orange-600">Pedidos</h2>
+            <ul className="gestao-order-list">
+              {orders.map((order) => (
+                <li key={order.id}>
+                  Pedido #{order.id}: {order.quantity} itens para {order.address} - R${order.price}
+                </li>
+              ))}
+            </ul>
+    
+            <h3 className="gestao-total">Total a Pagar: R${totalAmount}</h3>
+    
+            <Link to="/" className="gestao-link">Voltar</Link>
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );    
 };
 
 export default GestaoPedidos;
