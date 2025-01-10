@@ -81,7 +81,7 @@
 .gestao-input:focus,
 .gestao-select:focus,
 .gestao-autocomplete:focus {
-  box-shadow: 0 0 0 2px #6366f1; /* focus:ring-indigo-500 */
+  box-shadow: 0 0 0 2px #f88d36;
 }
 
 /* Botões */

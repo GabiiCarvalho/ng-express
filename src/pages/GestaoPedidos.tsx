@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 import AutoComplete from 'react-google-autocomplete';
+import "../index.css";
 
 const GestaoPedidos: React.FC = () => {
   const [orders, setOrders] = useState<{ id: number; address: string; quantity: number; price: number }[]>([]);
