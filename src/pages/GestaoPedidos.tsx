@@ -133,78 +133,74 @@ const GestaoPedidos: React.FC = () => {
 
   const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
 
-  return (   
-      <div className="gestao-container">
-        <div className="gestao-card">
-          <h1 className="gestao-title">Solicitação de Entregas</h1>
-    
-          <div className="space-y-4 w-full max-w-md">
-            <div>
-              <label className="gestao-label">Selecione a Cidade:</label>
-              <div className="form-container">
-              <select
-                value={city}
-                onChange={(e) => setCity(e.target.value as City)}
-                className="gestao-select"
-              >
-                <option value="">Selecione</option>
-                {cities.map((cityName) => (
-                  <option key={cityName} value={cityName}>
-                    {cityName}
-                  </option>
-                ))}
-              </select>
+  return (
+    <div className="gestao-container">
+      <div className="gestao-card">
+        <h1 className="gestao-title">Solicitação de Entregas</h1>
+
+        <div className="space-y-4 w-full max-w-md">
+          <div>
+            <label className="gestao-label-select">Selecione a Cidade:</label>
+            <div className="form-container">
+              {/* Grupo de seleção de cidade e quantidade */}
+              <div className="input-group">
+                <select
+                  value={city}
+                  onChange={(e) => setCity(e.target.value as City)}
+                  className="gestao-select"
+                >
+                  <option value="">Selecione a Cidade</option>
+                  {cities.map((cityName) => (
+                    <option key={cityName} value={cityName}>
+                      {cityName}
+                    </option>
+                  ))}
+                </select>
+              </div>
+
+              {/* Grupo de endereço, número e complemento */}
+              <div className="input-group">
+                <AutoComplete
+                  apiKey={GOOGLE_API_KEY}
+                  onPlaceSelected={handleAddressSelect}
+                  className="gestao-autocomplete"
+                  placeholder="Endereço"
+                />
+
+                <input
+                  type="text"
+                  value={number}
+                  onChange={(e) => setNumber(e.target.value)}
+                  className="gestao-input"
+                  placeholder="Número"
+                />
+
+                <input
+                  type="text"
+                  value={complement}
+                  onChange={(e) => setComplement(e.target.value)}
+                  className="gestao-input"
+                  placeholder="Complemento"
+                />
+              </div>
+
+              <div>
+                <label className="gestao-label">Quantidade de Pedidos:</label>
+                <input
+                  type="number"
+                  value={quantity}
+                  min={1}
+                  onChange={(e) => setQuantity(Number(e.target.value))}
+                  className="gestao-input"
+                  placeholder="Quantidade"
+                />
+              </div>
+
+              <button onClick={handleCalculatePrice} className="gestao-button">
+                Calcular Valor
+              </button>
             </div>
-    
-            <div>
-              <label className="gestao-label">Endereço de Entrega:</label>
-              <AutoComplete
-                apiKey={GOOGLE_API_KEY}
-                onPlaceSelected={handleAddressSelect}
-                options={{ types: ['address'], componentRestrictions: { country: 'BR' } }}
-                defaultValue={address}
-                placeholder="Digite o endereço"
-                className="gestao-autocomplete"
-              />
-            </div>
-    
-            <div>
-              <label className="gestao-label">Número:</label>
-              <input
-                type="text"
-                value={number}
-                onChange={(e) => setNumber(e.target.value)}
-                placeholder="Ex: 123"
-                className="gestao-input"
-              />
-            </div>
-    
-            <div>
-              <label className="gestao-label">Complemento:</label>
-              <input
-                type="text"
-                value={complement}
-                onChange={(e) => setComplement(e.target.value)}
-                placeholder="Apto, Bloco, etc. (opcional)"
-                className="gestao-input"
-              />
-            </div>
-    
-            <div>
-              <label className="gestao-label">Quantidade de Pedidos:</label>
-              <input
-                type="number"
-                value={quantity}
-                onChange={(e) => setQuantity(parseInt(e.target.value) || 1)}
-                className="gestao-input"
-              />
-            </div>
-    
-            <button onClick={handleCalculatePrice} className="gestao-button">
-              Calcular Valor
-            </button>
-            </div>
-    
+
             {calculatedPrice !== null && (
               <div className="mt-4 text-center">
                 <h3 className="gestao-total">Valor Total: R${calculatedPrice}</h3>
@@ -218,7 +214,7 @@ const GestaoPedidos: React.FC = () => {
                 </div>
               </div>
             )}
-    
+
             <h2 className="gestao-title text-orange-600">Pedidos</h2>
             <ul className="gestao-order-list">
               {orders.map((order) => (
@@ -227,14 +223,17 @@ const GestaoPedidos: React.FC = () => {
                 </li>
               ))}
             </ul>
-    
+
             <h3 className="gestao-total">Total a Pagar: R${totalAmount}</h3>
-    
-            <Link to="/" className="gestao-link">Voltar</Link>
+
+            <div className="btn-back">
+              <Link to="/" className="gestao-link">Voltar</Link>
+            </div>
           </div>
         </div>
       </div>
-    );    
+      </div>
+      );    
 };
 
-export default GestaoPedidos;
+      export default GestaoPedidos;
