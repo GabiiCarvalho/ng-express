@@ -15,8 +15,7 @@ const Home: React.FC = () => {
     {
       title: 'Gestão de Pedidos',
       items: [
-        { name: 'Rastreamento de Pedidos', link: '/rastreamento-pedidos' },
-        { name: 'Otimização de Rotas', link: '/otimizacao-rotas' },
+        { name: 'Rastreamento de Pedidos', link: '/rastreamento-pedidos' },  
         { name: 'Solicitação de Entregas', link: '/GestaoPedidos' }
       ]
     },
@@ -24,40 +23,28 @@ const Home: React.FC = () => {
       title: 'Despacho de Motoboys',
       items: [
         { name: 'Status em Tempo Real', link: '/status-tempo-real' },
-        { name: 'Atribuição de Tarefas', link: '/atribuicao-tarefas' },
-        { name: 'Reatribuição de Emergência', link: '/reatribuicao-emergencia' }
-      ]
-    },
-    {
-      title: 'Gestão de Inventário',
-      items: [
-        { name: 'Controle de Estoque', link: '/controle-estoque' },
-        { name: 'Gestão de Suprimentos', link: '/gestao-suprimentos' },
-        { name: 'Alertas de Inventário', link: '/alertas-inventario' }
+        { name: 'Motoboy Disponível', link: '/motoboy-disponivel' }      
       ]
     },
     {
       title: 'CRM (Gestão de Relacionamento com o Cliente)',
       items: [
         { name: 'Feedback de Clientes', link: '/feedback-clientes' },
-        { name: 'Histórico de Pedidos', link: '/historico-pedidos' },
-        { name: 'Programas de Fidelidade', link: '/programas-fidelidade' }
+        { name: 'Histórico de Pedidos', link: '/historico-pedidos' }    
       ]
     },
     {
       title: 'Faturamento e Emissão de Notas',
       items: [
-        { name: 'Geração de Faturas', link: '/geracao-faturas' },
-        { name: 'Rastreamento de Pagamentos', link: '/rastreamento-pagamentos' },
-        { name: 'Cálculo de Impostos', link: '/calculo-impostos' }
+        { name: 'Emissão de Nota Fiscal', link: '/emissao-nota-fiscal' },  
+        { name: 'Formas de Pagamentos', link: '/formas-pagamento' }      
       ]
     },
     {
       title: 'Relatórios e Análises',
       items: [
         { name: 'Relatórios de Desempenho', link: '/relatorios-desempenho' },
-        { name: 'Análise de Tempo de Entrega', link: '/analise-tempo-entrega' },
-        { name: 'Rastreamento de Receita', link: '/rastreamento-receita' }
+        { name: 'Análise de Tempo de Entrega', link: '/analise-tempo-entrega' }
       ]
     }
   ];
@@ -103,8 +90,9 @@ const Home: React.FC = () => {
           <a href="https://www.facebook.com/negexpressteleentrega?mibextid=ZbWKwL" target="_blank" rel="noopener noreferrer"><FaFacebookF /></a>
           <a href="https://www.instagram.com/ng.express_/profilecard/?igsh=MTB6NnJ0N3AxZXc4Zw==" target="_blank" rel="noopener noreferrer"><FaInstagram /></a>
           <a href="https://www.google.com.br/search?q=n%26g&sca_esv=970bf9b28f8ad5fb&sxsrf=ADLYWILJ1wJI5XcWGlEmK6dID2IyylZd-A%3A1736527046386&source=hp&ei=xkyBZ_6kFejX5OUPuqumwAc&iflsig=AL9hbdgAAAAAZ4Fa1sXvIEV0jZQv8B1-GPDlIhVJYK6t&ved=0ahUKEwj-n_aty-uKAxXoK7kGHbqVCXgQ4dUDCBc&uact=5&oq=n%26g&gs_lp=Egdnd3Mtd2l6IgNuJmcyBBAjGCcyBRAAGIAEMgcQABiABBgKMgsQLhiABBjHARivATINEC4YgAQYxwEYChivATIKEAAYgAQYsQMYCjINEC4YgAQYxwEYChivATIHEAAYgAQYCjIHEAAYgAQYCjIHEAAYgAQYCkj1CVAAWK4EcAB4AJABAJgB6AGgAYoEqgEFMC4yLjG4AQPIAQD4AQGYAgOgAqcEwgIKECMYgAQYJxiKBcICERAuGIAEGLEDGNEDGIMBGMcBwgILEC4YgAQYsQMYgwHCAggQABiABBixA8ICDhAuGIAEGLEDGNEDGMcBwgILEAAYgAQYsQMYgwGYAwCSBwUwLjIuMaAHgyY&sclient=gws-wiz" target="_blank" rel="noopener noreferrer"><FaGoogle /></a>
-        </div>
+        </div>    
       </footer>
+      <span className='copyright'>2016 - 2025, Copyright  © N&G Express. Todos os direitos reservados.</span>
     </div>
   );
 };
