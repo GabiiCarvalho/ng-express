@@ -36,7 +36,7 @@ const Home: React.FC = () => {
     {
       title: 'Faturamento e Emissão de Notas',
       items: [
-        { name: 'Emissão de Nota Fiscal', link: '/emissao-nota-fiscal' },  
+        { name: 'Emissão de Nota Fiscal', link: '/emissao-nota-fiscalk' },  
         { name: 'Formas de Pagamentos', link: '/formas-pagamento' }      
       ]
     },
