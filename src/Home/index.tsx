@@ -30,7 +30,7 @@ const Home: React.FC = () => {
       title: 'CRM (Gestão de Relacionamento com o Cliente)',
       items: [
         { name: 'Feedback de Clientes', link: '/feedback-clientes' },
-        { name: 'Histórico de Pedidos', link: '/historico-pedidos' }    
+        { name: 'Histórico de Pedidos', link: '/CRM' }    
       ]
     },
     {
