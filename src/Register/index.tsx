@@ -11,6 +11,10 @@ const Register: React.FC = () => {
           <input type="text" id="name" name="name" required />
         </div>
         <div className="input-group">
+          <label htmlFor="username">CPF / CNPJ</label>
+          <input type="text" id="cpf" name="cpf" required />
+        </div>
+        <div className="input-group">
           <label htmlFor="email">E-mail</label>
           <input type="email" id="email" name="email" required />
         </div>
@@ -19,7 +23,19 @@ const Register: React.FC = () => {
           <input type="phone" id="phone" name="phone" required />
         </div>
         <div className="input-group">
+          <label htmlFor="username">Endereço</label>
+          <input type="text" id="address" name="endereco" required />
+        </div>
+        <div className="input-group">
+          <label htmlFor="username">CEP</label>
+          <input type="text" id="cep" name="cep" required />
+        </div>
+        <div className="input-group">
           <label htmlFor="password">Senha</label>
+          <input type="password" id="password" name="password" required />
+        </div>
+        <div className="input-group">
+          <label htmlFor="password">Confirme sua senha</label>
           <input type="password" id="password" name="password" required />
         </div>
         <button type="submit" className="btn">Cadastrar</button>
